@@ -1,0 +1,14 @@
+<h1>MANGA MADNESS</h1>  
+<h4 class="text-crnter">an Anime lover's paradise</h4>
+
+
+<div class="carouselContainer row">
+    <div class="carousel col-md-4">
+        {{#each movies as |movie|}}
+            <div
+                class="carousel_face"
+                style="background-image: url({{poster}});"
+            ></div>
+        {{/each}}
+    </div>
+</div>
