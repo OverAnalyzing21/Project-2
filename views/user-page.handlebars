@@ -1,0 +1,30 @@
+
+<section class="w-100">
+    <h2 class="text-center display-4">@{{user.username}}'s Review Board</h2>
+    <div class="container">
+    <div class="post-list row">
+        {{#each user.comments as |comment|}}
+            <div class="col-md-4">
+                <div class="movie-card"><img
+                    src="{{movie.poster}}"
+                    class="img img-responsive"
+                  />
+                  <div class="movie-title">{{movie.title}}</div>
+                  <div class="movie-position"><a>{{#times movie_rating}}
+                        <i class="fas fa-star"></i>
+                      {{/times}}</a></div>
+                  <div class="movie-overview">
+                    <div class="movie-overview">
+                        <div class="row text-center">
+                            <div class="col-xs-4">
+                                <h3><a href="/movie/{{movie_id}}">See More Reviews</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                  </div>  
+            </div>
+            </div>
+        {{/each}}
+    </div>
+    </div>
+</section>

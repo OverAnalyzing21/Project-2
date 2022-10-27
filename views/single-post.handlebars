@@ -1,0 +1,95 @@
+<h2 class="text-center display-4" id="curretMovieTitle">{{movie.title}}</h2>
+<div class="average-rate text-center mb-2"></div>
+<div class="d-flex justify-content-center">
+        <img src="{{movie.poster}}" class="w-25 h-30 mb-2" id="currentMoviePoster" />
+</div>
+
+{{#if loggedIn}}
+
+    {{#each movie.comments as |comment|}}
+        <div class="reviews mt-3">
+            <div class="d-flex inline justify-content-between">
+
+                <p><a
+                    href="/users/{{comment.user.username}}"
+                    >@{{comment.user.username}}</a></p>
+
+                <div class="ratebox text-center">
+                    {{#times comment.movie_rating}}
+                        <i class="fas fa-star"></i>
+                    {{/times}}
+                </div>
+
+                <p class="d-flex justify-content-end review-text">{{formate_date
+                    comment.created_at
+                }}</p>
+
+            </div>
+
+            <p class="review-text p-4">{{comment.comment_text}}</p>
+        </div>
+
+        {{/each}}
+
+        <div class="d-flex justify-content center mt-5">
+            <button
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#movieReview"
+                class="movieChoice"
+                >Review This Movie</button>
+        </div>
+        
+        <div
+            class="modal fade"
+            id="movieReview"
+            tabindex="1"
+            aria-labelledy="movieReviewlabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title modal-text-bold" id="movieReviewLabel"></h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body bg-dark bg opacity-50">
+                        <form
+                            class="new-post-form d-flex flex column justify-content-around align-items"
+                        >
+                            <div>
+                                <img id="movie-poster" src="" alt="" />
+                                <div class="rating" name="rating">
+                                    <i class="rating_star far fa-star"></i>
+                                    <i class="rating_star far fa-star"></i>
+                                    <i class="rating_star far fa-star"></i>
+                                    <i class="rating_star far fa-star"></i>
+                                    <i class="rating_star far fa-star"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <textarea
+                                    class="w-100"
+                                    id="post-text"
+                                    name="post-text"
+                                ></textarea>
+                            </div>
+                            <button type="submit" class="button">Review This Movie!!!</button>
+                        </form>
+                    </div>
+                    <div class=" modal-footer bg-dark">
+                        <button type="button" data-bs-dismiss="modal">I Changed My Mind</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/javascript/from-single-add.js"></script>
+        <script src="/javascript/rating.js"></script>
+
+{{/if}}
