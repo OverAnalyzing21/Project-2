@@ -1,0 +1,61 @@
+<section class="p-3 text-center">
+  <h2 id="userName" class="display-4" data-username="{{user.username}}">SEARCH TO CREATE A REVIEW</h2>
+
+  <section class="m-3 text-center">
+    <form class="mb-3">
+      <input type="text" id="movie-search" name="movie-search">
+      <button type="submit" id="searchMovie">Search</button>
+    </form>
+    <div class="userCardContainer w-100" id="movielist">
+      {{!-- <h3 class="text-center w-100">&#8593 Search here to Review a Movie &#8593</h3> --}}
+    </div>
+    <div id="try-again">
+  </section>
+</section>
+
+<div
+  class="modal fade"
+  id="movieReview"
+  tabindex="-1"
+  aria-labelledby="movieReviewLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title modal-text-bold" id="movieReviewLabel"></h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body bg-dark bg-opacity-50">
+ <form class="new-post-form d-flex flex-column justify-content-around align-items-center p-3">
+    <div>
+      <img id="movie-poster" src="" alt=""/>
+          <div class="rating" name="rating">
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+         <i class="rating__star far fa-star"></i>
+    </div>
+    </div>
+    <div>
+      <textarea class="w-100" id="post-text" name="post-text"></textarea>
+    </div>
+    <button type="submit" class="button">Review This Movie!</button>
+  </form>
+      </div>
+      <div class="modal-footer bg-dark">
+        <button type="button" data-bs-dismiss="modal">Choose Another Movie Instead</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/javascript/movie-search.js"></script>
+<script src="/javascript/add-post.js"></script>
+<script src="/javascript/rating.js"></script>
