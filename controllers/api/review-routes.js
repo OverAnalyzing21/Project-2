@@ -4,7 +4,7 @@ const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
   Review.findAll()
-    .then((dbCommentData) => res.json(dbCommentData))
+    .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -16,11 +16,11 @@ router.get("/user-comments", (req, res) => {
     where: {
       user_id: req.session.user_id,
     },
-    attributes: ["movie_id"],
+    attributes: ["anime_id"],
   })
-    .then((dbCommentData) => {
-      const comments = dbCommentData.map((post) => post.get({ plain: true }));
-      res.json(comments);
+    .then((dbReviewData) => {
+      const reviews = dbReviewData.map((post) => post.get({ plain: true }));
+      res.json(reviews);
     })
     .catch((err) => {
       console.log(err);
@@ -30,12 +30,12 @@ router.get("/user-comments", (req, res) => {
 
 router.post("/", withAuth, (req, res) => {
   Review.create({
-    comment_text: req.body.comment_text,
+    comment_text: req.body.review_text,
     user_id: req.session.user_id,
-    movie_id: req.body.movie_id,
-    movie_rating: req.body.movie_rating,
+    movie_id: req.body.anime_id,
+    movie_rating: req.body.anime_rating,
   })
-    .then((dbCommentData) => res.json(dbCommentData))
+    .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -45,8 +45,8 @@ router.post("/", withAuth, (req, res) => {
 router.put("/:id", (req, res) => {
   Review.update(
     {
-      comment_text: req.body.comment_text,
-      movie_rating: req.body.movie_rating,
+      review_text: req.body.review_text,
+      movie_rating: req.body.anime_rating,
     },
     {
       where: {
@@ -54,12 +54,12 @@ router.put("/:id", (req, res) => {
       },
     }
   )
-    .then((dbCommentData) => {
-      if (!dbCommentData) {
+    .then((dbReviewData) => {
+      if (!dbReviewData) {
         res.status(404).json({ message: "No comment found with this id" });
         return;
       }
-      res.json(dbCommentData);
+      res.json(dbReviewData);
     })
     .catch((err) => {
       console.log(err);
@@ -73,12 +73,12 @@ router.delete("/:id", withAuth, (req, res) => {
       id: req.params.id,
     },
   })
-    .then((dbCommentData) => {
-      if (!dbCommentData) {
+    .then((dbReviewData) => {
+      if (!dbReviewData) {
         res.status(404).json({ message: "No comment found with this id!" });
         return;
       }
-      res.json(dbCommentData);
+      res.json(dbReviewData);
     })
     .catch((err) => {
       console.log(err);

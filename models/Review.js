@@ -30,7 +30,7 @@ Review.init(
       type: DataTypes.STRING,
       allowNull: false,
       references: {
-        model: "movie",
+        model: "anime",
         key: "id",
       },
     },
@@ -43,7 +43,7 @@ Review.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "comment",
+    modelName: "review",
   }
 );
 

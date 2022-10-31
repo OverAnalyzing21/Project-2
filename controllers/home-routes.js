@@ -7,12 +7,12 @@ router.get("/", (req, res) => {
   Anime.findAll({
     attributes: ["poster"],
   })
-    .then((dbMovieData) => {
-      let movies = dbMovieData.map((movie) => movie.get({ plain: true }));
-      const shuffled = movies.sort(() => 0.5 - Math.random());
-      movies = shuffled.slice(0, 9);
+    .then((dbAnimeData) => {
+      let anime = dbAnimeData.map((anime) => anime.get({ plain: true }));
+      const shuffled = anime.sort(() => 0.5 - Math.random());
+      animes = shuffled.slice(0, 9);
       res.render("homepage", {
-        movies,
+        animes,
         loggedIn: req.session.loggedIn,
       });
     })
@@ -34,10 +34,10 @@ router.get("/anime/:id", withAuth, (req, res) => {
         model: Review,
         attributes: [
           "id",
-          "comment_text",
-          "movie_id",
+          "review_text",
+          "anime_id",
           "user_id",
-          "movie_rating",
+          "anime_rating",
           "created_at",
         ],
         include: {
@@ -47,15 +47,15 @@ router.get("/anime/:id", withAuth, (req, res) => {
       },
     ],
   })
-    .then((dbMovieData) => {
-      if (!dbMovieData) {
+    .then((dbAnimeData) => {
+      if (!dbAnimeData) {
         res.status(404).json({ message: "No movie found with this id" });
         return;
       }
-      const movie = dbMovieData.get({ plain: true });
+      const anime = dbAnimeData.get({ plain: true });
 
       res.render("single-post", {
-        movie,
+        anime,
         loggedIn: req.session.loggedIn,
       });
     })
@@ -69,9 +69,9 @@ router.get("/reviews", withAuth, (req, res) => {
   Review.findAll({
     attributes: [
       "id",
-      "comment_text",
-      "movie_id",
-      "movie_rating",
+      "review_text",
+      "anime_id",
+      "anime_rating",
       "created_at",
     ],
     include: [
@@ -86,10 +86,10 @@ router.get("/reviews", withAuth, (req, res) => {
     ],
     order: [["createdAt", "DESC"]],
   })
-    .then((dbCommentData) => {
-      const comments = dbCommentData.map((post) => post.get({ plain: true }));
+    .then((dbReviewData) => {
+      const reviews = dbReviewData.map((post) => post.get({ plain: true }));
 
-      res.render("reviews", { comments, loggedIn: true });
+      res.render("reviews", { reviews, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -109,10 +109,10 @@ router.get("/users/:username", withAuth, (req, res) => {
         model: Review,
         attributes: [
           "id",
-          "comment_text",
-          "movie_id",
+          "review_text",
+          "anime_id",
           "user_id",
-          "movie_rating",
+          "anime_rating",
           "created_at",
         ],
         order: ["created_at"],

@@ -29,10 +29,10 @@ module.exports = {
     for (var i = 0; i < n; ++i) accum += block.fn(i);
     return accum;
   },
-  shortened_comment: (comment) => {
-    if (comment.length > 30) {
-      return `${comment.substr(0, 30)}...`;
+  shortened_review: (review) => {
+    if (review.length > 30) {
+      return `${review.substr(0, 30)}...`;
     }
-    return comment;
+    return review;
   },
 };

@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Review,
-        attributes: ["id", "comment_text", "movie_id", "user_id", "created_at"],
+        attributes: ["id", "review_text", "anime_id", "user_id", "created_at"],
         include: {
           model: Anime,
           attributes: ["title", "poster"],
@@ -34,9 +34,9 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Review,
-        attributes: ["id", "comment_text", "created_at"],
+        attributes: ["id", "review_text", "created_at"],
         include: {
-          model: Movie,
+          model: Anime,
           attributes: ["title"],
         },
       },

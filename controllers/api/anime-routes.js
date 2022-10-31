@@ -11,9 +11,9 @@ router.get("/", (req, res) => {
         model: Review,
         attributes: [
           "id",
-          "comment_text",
-          "movie_id",
-          "movie_rating",
+          "review_text",
+          "anime_id",
+          "anime_rating",
           "user_id",
           "created_at",
         ],
@@ -40,7 +40,7 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Review,
-        attributes: ["id", "comment_text", "movie_id", "user_id", "created_at"],
+        attributes: ["id", "review_text", "anime_id", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -48,12 +48,12 @@ router.get("/:id", (req, res) => {
       },
     ],
   })
-    .then((dbMovieData) => {
-      if (!dbMovieData) {
+    .then((dbAnimeData) => {
+      if (!dbAnimeData) {
         res.status(404).json({ message: "No movie found with this id" });
         return;
       }
-      res.json(dbMovieData);
+      res.json(dbAnimeData);
     })
     .catch((err) => {
       console.log(err);
@@ -63,11 +63,11 @@ router.get("/:id", (req, res) => {
 
 router.post("/", withAuth, (req, res) => {
   Anime.create({
-    id: req.body.movie_id,
+    id: req.body.anime_id,
     title: req.body.title,
     poster: req.body.poster,
   })
-    .then((dbMovieData) => res.json(dbMovieData))
+    .then((dbAnimeData) => res.json(dbAnimeData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -85,12 +85,12 @@ router.put("/:id", withAuth, (req, res) => {
       },
     }
   )
-    .then((dbMovieData) => {
-      if (!dbMovieData) {
+    .then((dbAnimeData) => {
+      if (!dbAnimeData) {
         res.status(404).json({ message: "No movie found with this id" });
         return;
       }
-      res.json(dbMovieData);
+      res.json(dbAnimeData);
     })
     .catch((err) => {
       console.log(err);
@@ -104,12 +104,12 @@ router.delete("/:id", withAuth, (req, res) => {
       id: req.params.id,
     },
   })
-    .then((dbMovieData) => {
-      if (!dbMovieData) {
+    .then((dbAnimeData) => {
+      if (!dbAnimeData) {
         res.status(404).json({ message: "No movie found with this id" });
         return;
       }
-      res.json(dbMovieData);
+      res.json(dbAnimeData);
     })
     .catch((err) => {
       console.log(err);

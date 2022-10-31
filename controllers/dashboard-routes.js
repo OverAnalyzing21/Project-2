@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Anime, User, Review } = require("../models");
 const withAuth = require("../utils/auth");
 
-// get all comments for dashboard
+// get all reviews
 router.get("/", withAuth, (req, res) => {
   Review.findAll({
     where: {
@@ -10,9 +10,9 @@ router.get("/", withAuth, (req, res) => {
     },
     attributes: [
       "id",
-      "comment_text",
-      "movie_id",
-      "movie_rating",
+      "review_text",
+      "anime_id",
+      "anime_rating",
       "created_at",
     ],
     include: [
@@ -27,9 +27,9 @@ router.get("/", withAuth, (req, res) => {
     ],
     order: [["createdAt", "DESC"]],
   })
-    .then((dbCommentData) => {
-      const comments = dbCommentData.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { comments, loggedIn: true });
+    .then((dbReviewData) => {
+      const reviews = dbReviewData.map((post) => post.get({ plain: true }));
+      res.render("dashboard", { reviews, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -41,9 +41,9 @@ router.get("/edit/:id", withAuth, (req, res) => {
   Review.findByPk(req.params.id, {
     attributes: [
       "id",
-      "comment_text",
-      "movie_id",
-      "movie_rating",
+      "review_text",
+      "anime_id",
+      "anime_rating",
       "created_at",
     ],
     include: [
@@ -57,11 +57,11 @@ router.get("/edit/:id", withAuth, (req, res) => {
       },
     ],
   })
-    .then((dbCommentData) => {
-      if (dbCommentData) {
-        const comment = dbCommentData.get({ plain: true });
+    .then((dbReviewData) => {
+      if (dbReviewData) {
+        const review = dbReviewData.get({ plain: true });
         res.render("edit-post", {
-          comment,
+          review,
           loggedIn: true,
         });
       } else {

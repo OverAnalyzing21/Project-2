@@ -13,8 +13,8 @@
     color: black;
     background: -webkit-linear-gradient(
       top,
-      rgba(125, 126, 125, 1) 0%,
-      rgba(14, 14, 14, 1) 100%
+      rgb(123, 249, 123) 0%,
+      rgb(3, 56, 3) 100%
     );
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -54,12 +54,12 @@
   h2,
   h5,
   .yellow {
-    color: #ffe23d;
+    color: #ced754;
   }
   
   a {
     text-decoration: none;
-    color: #ffe23d;
+    color: #ced754;
     font-weight: bold;
     transition: color 0.1s;
   }
