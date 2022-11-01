@@ -30,10 +30,10 @@ router.get("/user-reviews", (req, res) => {
 
 router.post("/", withAuth, (req, res) => {
   Review.create({
-    comment_text: req.body.review_text,
+    review_text: req.body.review_text,
     user_id: req.session.user_id,
-    movie_id: req.body.anime_id,
-    movie_rating: req.body.anime_rating,
+    anime_id: req.body.anime_id,
+    anime_rating: req.body.anime_rating,
   })
     .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {

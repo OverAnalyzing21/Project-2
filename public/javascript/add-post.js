@@ -66,7 +66,7 @@ async function postAnime() {
       "Content-Type": "application/json",
     },
   });
-  if (review.ok) {
+  if (comment.ok) {
     document.location.replace("/dashboard");
   } else {
     alert(response.statusText);
