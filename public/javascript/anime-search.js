@@ -14,7 +14,6 @@ function animeSearch() {
     method: "GET",
     redirect: "follow",
     headers: {
-		'X-RapidAPI-Key': '4eec39b591msh4d59b594451f352p12a26bjsnfa2ade41ea9b',
 	  'X-RapidAPI-Host': 'https://api.jikan.moe/v4/'
 	}
   };
@@ -26,7 +25,7 @@ function animeSearch() {
   // if there is something in the search bar, fetch request
   if (searchOption) {
     fetch(
-      `https://api.jikan.moe/v4/anime?q=${searchOption}`,
+      `https://api.jikan.moe/v4/search/anime?q=${searchOption}&limit=20`,
       requestOptions
     )
       .then((response) => response.json())
