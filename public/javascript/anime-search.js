@@ -15,7 +15,7 @@ function animeSearch() {
     redirect: "follow",
     headers: {
 		'X-RapidAPI-Key': '4eec39b591msh4d59b594451f352p12a26bjsnfa2ade41ea9b',
-	    'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
+	  'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
 	}
   };
 
@@ -26,7 +26,7 @@ function animeSearch() {
   // if there is something in the search bar, fetch request
   if (searchOption) {
     fetch(
-      `https://myanimelist.p.rapidapi.com/search/${searchOption}/5`,
+      `https://myanimelist.p.rapidapi.com/anime/${searchOption}`,
       requestOptions
     )
       .then((response) => response.json())
