@@ -80,7 +80,7 @@ async function postAnime() {
     });
   }
 
-  const review = await fetch(`/api/reviews`, {
+  const reviewz = await fetch(`/api/reviews`, {
     method: "POST",
     body: JSON.stringify({
       review_text,
@@ -91,7 +91,7 @@ async function postAnime() {
       "Content-Type": "application/json",
     },
   });
-  if (review.ok) {
+  if (reviewz.ok) {
     document.location.replace("/dashboard");
   } else {
     alert(response.statusText);
@@ -112,7 +112,7 @@ document.querySelector(".animeChoice").addEventListener("click", function (e) {
   ];
   document.querySelector("#animeReviewLabel").innerText = title;
   document.querySelector("#anime-poster").setAttribute("src", poster);
-  currentMovie = { title: title, anime_id: anime_id, poster: poster };
+  currentAnime = { title: title, anime_id: anime_id, poster: poster };
 });
 
 getAverage();

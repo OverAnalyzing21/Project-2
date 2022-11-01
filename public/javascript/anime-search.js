@@ -64,7 +64,7 @@ function showAnimes(animes) {
 
   animeList.innerHTML = temp;
 
-  tryAgain.innerHTML = `<a href="/dashboard">Didn't see what you were looking for? Try to get more specific. We aren't mind readers.</a>`;
+  tryAgain.innerHTML = `<a href="/dashboard">Didn't see what you were looking for? Try to get more specifi, or not, idc.</a>`;
 }
 
 document.querySelector("#searchAnime").addEventListener("click", animeSearch);

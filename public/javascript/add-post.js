@@ -55,7 +55,7 @@ async function postAnime() {
     });
   }
 
-  const review = await fetch(`/api/reviews`, {
+  const reviewz = await fetch(`/api/reviews`, {
     method: "POST",
     body: JSON.stringify({
       review_text,
@@ -66,7 +66,7 @@ async function postAnime() {
       "Content-Type": "application/json",
     },
   });
-  if (review.ok) {
+  if (reviewz.ok) {
     document.location.replace("/dashboard");
   } else {
     alert(response.statusText);
