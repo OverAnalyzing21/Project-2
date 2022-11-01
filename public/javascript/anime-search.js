@@ -13,19 +13,16 @@ function animeSearch() {
   const requestOptions = {
     method: "GET",
     redirect: "follow",
-    headers: {
-	  'X-RapidAPI-Host': 'https://api.jikan.moe/v4/'
-	}
   };
 
-  
+  const apiKey = "k_m6r8p68f";
   const searchOption = document.querySelector("#anime-search").value;
   // search bar value set to nothing
   document.querySelector("#anime-search").value = "";
   // if there is something in the search bar, fetch request
   if (searchOption) {
     fetch(
-      `https://api.jikan.moe/v4/search/anime?q=${searchOption}&limit=20`,
+      `https://imdb-api.com/API/Search/${apiKey}/${searchOption}`,
       requestOptions
     )
       .then((response) => response.json())
