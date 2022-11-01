@@ -67,7 +67,7 @@ async function postAnime() {
   // check to see if the movie is in the database first
   if (!animeResponse.ok) {
     // if not, add it
-    const postNewAnime = await fetch(`/api/anime`, {
+    const anime_id = await fetch(`/api/anime`, {
       method: "POST",
       body: JSON.stringify({
         anime_id,
