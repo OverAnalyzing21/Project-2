@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/user-comments", (req, res) => {
+router.get("/user-reviews", (req, res) => {
   Review.findAll({
     where: {
       user_id: req.session.user_id,
@@ -46,7 +46,7 @@ router.put("/:id", (req, res) => {
   Review.update(
     {
       review_text: req.body.review_text,
-      movie_rating: req.body.anime_rating,
+      anime_rating: req.body.anime_rating,
     },
     {
       where: {

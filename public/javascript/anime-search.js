@@ -1,5 +1,5 @@
 const tryAgain = document.querySelector("#try-again");
-function movieSearch() {
+function animeSearch() {
   event.preventDefault();
 
   const longLoad = setTimeout(() => {
@@ -9,7 +9,7 @@ function movieSearch() {
   tryAgain.innerHTML = `<div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
   <span class="visually-hidden">Loading...</span>
 </div></div>`;
-  // imdb get request
+  // mal get request
   const requestOptions = {
     method: "GET",
     redirect: "follow",
@@ -20,9 +20,9 @@ function movieSearch() {
   };
 
   const apiKey = "4eec39b591msh4d59b594451f352p12a26bjsnfa2ade41ea9b";
-  const searchOption = document.querySelector("#movie-search").value;
+  const searchOption = document.querySelector("#anime-search").value;
   // search bar value set to nothing
-  document.querySelector("#movie-search").value = "";
+  document.querySelector("#anime-search").value = "";
   // if there is something in the search bar, fetch request
   if (searchOption) {
     fetch(
@@ -31,7 +31,7 @@ function movieSearch() {
     )
       .then((response) => response.json())
       .then((result) => {
-        showMovies(result);
+        showAnimes(result);
         clearTimeout(longLoad);
       })
       .catch((error) => {
@@ -44,31 +44,31 @@ function movieSearch() {
   }
 }
 
-function showMovies(movies) {
-  const movieList = document.querySelector("#movieList");
-  // if movielist has child elements, remove them for the next search
-  while (movieList.firstChild) {
-    movieList.removeChild(movieList.firstChild);
+function showAnimes(animes) {
+  const animeList = document.querySelector("#animeList");
+  // if anime has child elements, remove them for the next search
+  while (animeList.firstChild) {
+    animeList.removeChild(animeList.firstChild);
   }
   //  for loop for top 5 movies of the search
   let temp = "";
   for (let i = 0; i < 5; i++) {
     temp += `<div class="userCard" data-id=${
-      movies.results[i].id
-    } style="background-image: url('${movies.results[i].image}')">
-      <h3 class="title movie-name">${
-        movies.results[i].title
-      }</h3><div class="inner-text">${movies.results[i].description.substr(
+      animes.results[i].id
+    } style="background-image: url('${animes.results[i].image}')">
+      <h3 class="title anime-name">${
+        animes.results[i].title
+      }</h3><div class="inner-text">${animes.results[i].description.substr(
       0,
       6
     )}</div>
-      <div class="bottom-button"><button type="button" data-bs-toggle="modal" data-bs-target="#movieReview" class="movieChoice">Choose This One</button></div>
+      <div class="bottom-button"><button type="button" data-bs-toggle="modal" data-bs-target="#movieReview" class="animeChoice">Choose This One</button></div>
     </div>`;
   }
 
-  movieList.innerHTML = temp;
+  animeList.innerHTML = temp;
 
   tryAgain.innerHTML = `<a href="/dashboard">Didn't see what you were looking for? Try to get more specific. We aren't mind readers.</a>`;
 }
 
-document.querySelector("#searchMovie").addEventListener("click", movieSearch);
+document.querySelector("#searchAnime").addEventListener("click", animeSearch);

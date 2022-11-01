@@ -1,32 +1,32 @@
-<h2 class="text-center display-4" id="curretMovieTitle">{{movie.title}}</h2>
+<h2 class="text-center display-4" id="curretAnimeTitle">{{anime.title}}</h2>
 <div class="average-rate text-center mb-2"></div>
 <div class="d-flex justify-content-center">
-        <img src="{{movie.poster}}" class="w-25 h-30 mb-2" id="currentMoviePoster" />
+        <img src="{{anime.poster}}" class="w-25 h-30 mb-2" id="currentAnimePoster" />
 </div>
 
 {{#if loggedIn}}
 
-    {{#each movie.comments as |comment|}}
+    {{#each anime.reviews as |review|}}
         <div class="reviews mt-3">
             <div class="d-flex inline justify-content-between">
 
                 <p><a
-                    href="/users/{{comment.user.username}}"
-                    >@{{comment.user.username}}</a></p>
+                    href="/users/{{review.user.username}}"
+                    >@{{review.user.username}}</a></p>
 
                 <div class="ratebox text-center">
-                    {{#times comment.movie_rating}}
+                    {{#times review.anime_rating}}
                         <i class="fas fa-star"></i>
                     {{/times}}
                 </div>
 
                 <p class="d-flex justify-content-end review-text">{{formate_date
-                    comment.created_at
+                    review.created_at
                 }}</p>
 
             </div>
 
-            <p class="review-text p-4">{{comment.comment_text}}</p>
+            <p class="review-text p-4">{{review.review_text}}</p>
         </div>
 
         {{/each}}
@@ -35,22 +35,22 @@
             <button
                 type="button"
                 data-bs-toggle="modal"
-                data-bs-target="#movieReview"
-                class="movieChoice"
+                data-bs-target="#animeReview"
+                class="animeChoice"
                 >Review This Movie</button>
         </div>
         
         <div
             class="modal fade"
-            id="movieReview"
+            id="animeReview"
             tabindex="1"
-            aria-labelledy="movieReviewlabel"
+            aria-labelledy="animeReviewlabel"
             aria-hidden="true"
         >
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-dark">
-                        <h5 class="modal-title modal-text-bold" id="movieReviewLabel"></h5>
+                        <h5 class="modal-title modal-text-bold" id="animeReviewLabel"></h5>
                         <button
                             type="button"
                             class="btn-close"
@@ -63,7 +63,7 @@
                             class="new-post-form d-flex flex column justify-content-around align-items"
                         >
                             <div>
-                                <img id="movie-poster" src="" alt="" />
+                                <img id="anime-poster" src="" alt="" />
                                 <div class="rating" name="rating">
                                     <i class="rating_star far fa-star"></i>
                                     <i class="rating_star far fa-star"></i>

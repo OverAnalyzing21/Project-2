@@ -1,4 +1,4 @@
-const movieList = document.querySelector("#movielist");
+const animeList = document.querySelector("#animelist");
 const averageRatingBox = document.querySelector(".average-rate");
 
 function getAverage() {
@@ -28,49 +28,49 @@ function getAverage() {
   averageRatingBox.innerHTML = `Average Rating: ${averageRatingToHalf}/5 ${ratingHTML}`;
 }
 
-let currentMovie = {};
+let currentAnime = {};
 async function newFormHandler(event) {
   event.preventDefault();
 
-  const movie_id = currentMovie.movie_id;
+  const anime_id = currentAnime.anime_id;
 
-  await fetch(`/api/comments/user-comments`, {
+  await fetch(`/api/reviews/user-reviews`, {
     method: "GET",
   })
     .then((response) => response.json())
     .then((result) => {
-      const previousComments = result.filter(
-        (movie) => movie.movie_id === movie_id
+      const previousReviews = result.filter(
+        (anime) => anime.anime_id === anime_id
       );
-      if (previousComments.length === 0) {
-        postMovie();
+      if (previousReviews.length === 0) {
+        postAnime();
       } else {
         alert("You've already reviewed that movie!");
       }
     });
 }
 
-async function postMovie() {
-  const movie_id = currentMovie.movie_id;
-  const title = currentMovie.title;
-  const poster = currentMovie.poster;
-  const comment_text = document.querySelector(
+async function postAnime() {
+  const anime_id = currentAnime.anime_id;
+  const title = currentAnime.title;
+  const poster = currentAnime.poster;
+  const review_text = document.querySelector(
     'textarea[name="post-text"]'
   ).value;
-  const movie_rating = document
+  const anime_rating = document
     .querySelector(".rating")
     .querySelectorAll(".fas").length;
 
-  const movieResponse = await fetch(`/api/movie/${movie_id}`, {
+  const animeResponse = await fetch(`/api/anime/${anime_id}`, {
     method: "GET",
   });
   // check to see if the movie is in the database first
-  if (!movieResponse.ok) {
+  if (!animeResponse.ok) {
     // if not, add it
-    const postNewMovie = await fetch(`/api/movie`, {
+    const postNewAnime = await fetch(`/api/anime`, {
       method: "POST",
       body: JSON.stringify({
-        movie_id,
+        anime_id,
         title,
         poster,
       }),
@@ -80,18 +80,18 @@ async function postMovie() {
     });
   }
 
-  const comment = await fetch(`/api/comments`, {
+  const review = await fetch(`/api/reviews`, {
     method: "POST",
     body: JSON.stringify({
-      comment_text,
-      movie_id,
-      movie_rating,
+      review_text,
+      anime_id,
+      anime_rating,
     }),
     headers: {
       "Content-Type": "application/json",
     },
   });
-  if (comment.ok) {
+  if (review.ok) {
     document.location.replace("/dashboard");
   } else {
     alert(response.statusText);
@@ -102,17 +102,17 @@ document
   .querySelector(".new-post-form")
   .addEventListener("submit", newFormHandler);
 
-document.querySelector(".movieChoice").addEventListener("click", function (e) {
-  const title = document.querySelector("#currentMovieTitle").textContent;
+document.querySelector(".animeChoice").addEventListener("click", function (e) {
+  const title = document.querySelector("#currentAnimeTitle").textContent;
   const poster = document
-    .querySelector("#currentMoviePoster")
+    .querySelector("#currentAnimePoster")
     .getAttribute("src");
-  const movie_id = window.location.toString().split("/")[
+  const anime_id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
-  document.querySelector("#movieReviewLabel").innerText = title;
-  document.querySelector("#movie-poster").setAttribute("src", poster);
-  currentMovie = { title: title, movie_id: movie_id, poster: poster };
+  document.querySelector("#animeReviewLabel").innerText = title;
+  document.querySelector("#anime-poster").setAttribute("src", poster);
+  currentMovie = { title: title, anime_id: anime_id, poster: poster };
 });
 
 getAverage();

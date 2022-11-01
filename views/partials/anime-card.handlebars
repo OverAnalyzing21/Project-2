@@ -1,17 +1,17 @@
 <div class="col-md-4">
-    <div class="movie-card"><img
-        src="{{movie.poster}}"
+    <div class="anime-card"><img
+        src="{{anime.poster}}"
         class="img img-responsive"
     />
-    <div class="movie-title">{{movie.title}}</div>
-    <div class="movie-position"><a>{{#times movie_rating}}
+    <div class="anime-title">{{anime.title}}</div>
+    <div class="anime-position"><a>{{#times anime_rating}}
         <i class="fas fa-star"></i>
     {{/times}}</a></div>
-<div class="movie-overview">
-    <div class="movie-overview">
+<div class="anime-overview">
+    <div class="anime-overview">
         <div class="row text-center">
             <div class="col-xs-4">
-                <h3><a href="/movie/{{movie.id}}">See More Reviews</a></h3>
+                <h3><a href="/anime/{{anime.id}}">See More Reviews</a></h3>
             </div>
             <div class="col-xs-4">
                 <h3><a href="/dashboard/edit/{{id}}" class="edit-link">Edit Review</a></h3>

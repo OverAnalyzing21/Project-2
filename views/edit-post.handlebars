@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <h6 class="text-center display-4">{{comment.movie.title}}</h6>
+        <h6 class="text-center display-4">{{<review class="anime"></review>.title}}</h6>
         <div class="d-flex justify-content-center">
             <div class="rating" name="rating">
                 <i class="rating_star far fa-star"></i>
@@ -12,14 +12,14 @@
         </div>
     
         <div class="d-flex justify-content-center">
-            <img srd="{{comment.movie.poster}}" class="w-50 h-60 mb-2" />
+            <img srd="{{review.anime.poster}}" class="w-50 h-60 mb-2" />
         </div>
 
         <div class="d-flex justify-content-center">
             <textarea
-                id="comment-text"
+                id="review-text"
                 class="mb-2"
-            >{{comment.comment_text}}</textarea>
+            >{{review.review_text}}</textarea>
         </div>
 
         <div class="d-flex justify-content-center">

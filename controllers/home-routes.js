@@ -8,8 +8,8 @@ router.get("/", (req, res) => {
     attributes: ["poster"],
   })
     .then((dbAnimeData) => {
-      let anime = dbAnimeData.map((anime) => anime.get({ plain: true }));
-      const shuffled = anime.sort(() => 0.5 - Math.random());
+      let animes = dbAnimeData.map((anime) => anime.get({ plain: true }));
+      const shuffled = animes.sort(() => 0.5 - Math.random());
       animes = shuffled.slice(0, 9);
       res.render("homepage", {
         animes,

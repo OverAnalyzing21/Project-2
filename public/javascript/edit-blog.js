@@ -1,8 +1,8 @@
 async function editFormHandler(event) {
     event.preventDefault();
   
-    const comment_text = document.querySelector("#comment-text").value.trim();
-    const movie_rating = document
+    const review_text = document.querySelector("#review-text").value.trim();
+    const anime_rating = document
       .querySelector(".rating")
       .querySelectorAll(".fas").length;
   
@@ -12,8 +12,8 @@ async function editFormHandler(event) {
     const response = await fetch(`/api/comments/${id}`, {
       method: "PUT",
       body: JSON.stringify({
-        comment_text,
-        movie_rating,
+        review_text,
+        anime_rating,
       }),
       headers: {
         "Content-Type": "application/json",

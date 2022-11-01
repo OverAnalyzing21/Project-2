@@ -224,12 +224,12 @@
     color: #ffe23d;
   }
   
-  .comment {
+  .review {
     padding: 1%;
     margin-bottom: 1%;
   }
   
-  .comment .meta {
+  .review .meta {
     font-size: 90%;
     margin-bottom: 0.5%;
     opacity: 0.6;
@@ -239,7 +239,7 @@
     width: 300px;
   }
   
-  #movielist {
+  #animelist {
     display: flex;
   }
   
@@ -252,18 +252,18 @@
     color: #dabd18b2;
   }
   
-  .movieListSingleEl {
+  .animeListSingleEl {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     width: 40%;
     margin: 10px;
   }
   
-  .movieListSingleEl:hover {
+  .animeListSingleEl:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
   
-  .movieListSingleEl img {
+  .animeListSingleEl img {
     width: 100%;
   }
   
@@ -435,7 +435,7 @@
   
   /* =========Posted Movie Cards======== */
   
-  .movie-card {
+  .anime-card {
     max-width: 300px;
     max-height: 400px;
     background-color: #fff;
@@ -447,13 +447,13 @@
     cursor: pointer;
   }
   
-  .movie-card img {
+  .anime-card img {
     transition: all 0.15s linear;
     max-width: 100%;
     max-height: 100%;
   }
   
-  .movie-card .movie-title {
+  .anime-card .movie-title {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -469,7 +469,7 @@
     transition: all 0.15s linear;
   }
   
-  .movie-card .movie-position {
+  .anime-card .movie-position {
     position: absolute;
     color: rgba(255, 255, 255, 0.4);
     left: 30px;
@@ -477,7 +477,7 @@
     transition: all 0.15s linear;
   }
   
-  .movie-card .movie-overview {
+  .anime-card .anime-overview {
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -492,7 +492,7 @@
     transition: all 0.15s linear;
   }
   
-  .movie-card .movie-overview h3 {
+  .anime-card .movie-overview h3 {
     font-weight: bold;
   }
   
@@ -500,20 +500,20 @@
     color: rgba(255, 255, 255, 0.7);
   } */
   
-  .movie-card:hover img {
+  .anime-card:hover img {
     filter: brightness(30%);
   }
   
-  .movie-card:hover .movie-title {
+  .anime-card:hover .movie-title {
     padding-left: 25px;
     padding-top: 20px;
   }
   
-  .movie-card:hover .movie-position {
+  .anime-card:hover .movie-position {
     left: 40px;
   }
   
-  .movie-card:hover .movie-overview {
+  .anime-card:hover .movie-overview {
     padding-bottom: 25px;
   }
   
