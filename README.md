@@ -21,18 +21,20 @@
 ## Links
 
 * https://github.com/OverAnalyzing21/Project-2
-* Live URL
+* https://manga-madness.herokuapp.com/
 
 ## Installation Instructions
 
-To initialize, type the following commands into your Terminal:
-```
-npm i
-```
+no installation required
 
 ## My Usage
 
-This app is used to find and review Manga  movies. It is used to help Anime lovers find and get honest reviews from other Anime fans.  
+WHEN I go to the site
+I AM presented the option to create an account or log in
+WHEN I log in
+I AM able to search for my favorite shows and rate them
+WHEN I review and rate the shows
+I AM shown others reviews and the post is added to my personal dashboard
 
 ## Technology Used
 
@@ -45,6 +47,8 @@ Handlebars, Bootstrap, Heroku, Node.js, Express.js and MySQL
 
 
 ## Mockups and Screenshots
+
+![Manga_MadnessShoot](https://user-images.githubusercontent.com/107811233/199344017-6a948827-f3c3-4820-8e92-2f3ab82c5267.png)
 
 
 ## Questions
