@@ -54,12 +54,12 @@
   h2,
   h5,
   .yellow {
-    color: #ced754;
+    color: #000000;
   }
   
   a {
     text-decoration: none;
-    color: #ced754;
+    color: #000000;
     font-weight: bold;
     transition: color 0.1s;
   }
@@ -95,7 +95,7 @@
   textarea:focus,
   input:focus {
     outline: none;
-    border: 1px solid #f7d200;
+    border: 1px solid #000000;
   }
   
   textarea {
